@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS
-# from database import URLs
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -17,9 +16,7 @@ class URLs(db.Model):
     def __repr__(self):
         return '<URLs %r>' % self.long_url
 
-
-
-@app.route('/') 
+@app.route('/')
 def home():
     return render_template('index.html')
 
@@ -35,4 +32,5 @@ def results():
     else:
         return render_template('results.html', user_url='somestring')
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
